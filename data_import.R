@@ -16,7 +16,7 @@ crToSeurat <- function(directory,
                        gz = FALSE, 
                        merge = TRUE){ 
   
-  components <- c("matrix.mtx", "features.tsv", "barcodes.tsv")
+  components <- c("filtered_matrix.mtx", "filtered_features.tsv", "filtered_barcodes.tsv")
   
   if (gz) {
     components <- map_chr(components, ~str_c(.,".gz"))
