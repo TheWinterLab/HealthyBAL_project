@@ -7,7 +7,8 @@ output:
   toc: true
 ---
   
-This is the workflow used for the BAL single-cell analysis. Please install the following packages in order to recreate this analysis.
+This is the workflow used for the BAL single-cell analysis. It was created using R 4.0.3 and Seurat v3.2.2
+ We must install the following packages in order to recreate this analysis.
   
 ```{}
 install.packages("devtools")
@@ -27,8 +28,7 @@ BiocManager::install("SingleR")
 
 
 # Importing the Data and loading the libraries 
-The data is uploaded to GEO and should be moved to the working directory where you will be running this
-analysis. Please create a new folder within the working directory named as "GEO_data", and put the data from GEO in this folder.
+We must create a new folder within the working directory named as "BAL_Input" and a sub-folder for each sample. In each sub-folder there should be 6 files : filtered_matrix.mtx, filtered_features.tsv, filtered_barcodes.tsv, raw_matrix.mtx, raw_features.tsv and raw_barcodes.tsv .
 
 We must also import all of the required packages:
 
@@ -59,7 +59,7 @@ To create our Seurat object, we must load in our data. Using crToSeurat's ```mer
 parameter will also merge all of our objects together.
 
 ```{r}
-bal.all.control <- crToSeurat(directory = "./GEO_data/",
+bal.all.control <- crToSeurat(directory = "./Input/",
                     sample_names = c("BAL01", "BAL02","BAL03","BAL04"),
                     merge = TRUE)
 ```
